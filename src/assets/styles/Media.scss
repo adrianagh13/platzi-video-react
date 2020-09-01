@@ -1,0 +1,12 @@
+//Archivo para manejar estilos de media queries
+
+@media only screen and (max-width: 600px) {
+    .main__description--title{
+        font-size: 30px;
+    }
+
+    .footer{
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}

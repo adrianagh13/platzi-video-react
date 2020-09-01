@@ -35,7 +35,16 @@ module.exports = {
           'css-loader',
           'sass-loader'
         ]
-      }
+      },
+      {
+        test: /\.(jpe?g|png|gif|woff|woff2|eot|ttf|svg)(\?[a-z0-9=.]+)?$/, //regex para indicar que cualquier elemento que conincida con esta expresion sera usado en el proyecto
+        use: {
+          loader: 'file-loader',
+          options: { 
+            name: 'assets/[hash].[ext]' //con options {name: } Indicamos como se debe llamar e
+          }
+        }
+      },
     ],
   },
   plugins: [
