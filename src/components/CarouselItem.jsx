@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import play from '../assets/images/play.png';
 import plus from '../assets/images/plus.png';
@@ -23,5 +24,17 @@ const CarouselItem = ({ cover, title, year, contentRating, duration }) => ( //as
         </div>
     </div>
 );
+
+CarouselItem.propTypes = {
+    cover : PropTypes.string,
+    title : PropTypes.string,
+    year : PropTypes.number,
+    contentRating : PropTypes.string,
+    duration: PropTypes.number,
+}
+
+//PropTypes es la manera en que podemos indicar a nuestros componentes qué tipo de elemento son los props que recibe: ya sea string, numerico, boolean, etc
+//Por regla cuando le indiquemos PropTypes al componente, la p debe ser minúscula
+//Por cada prop que recibe el componente, indicamos el tipo de dato S
 
 export default CarouselItem;
