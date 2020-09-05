@@ -5,59 +5,39 @@ import Search from '../components/Search';
 import Categories from '../components/Categories';
 import Carousel from '../components/Carousel';
 import CarouselItem from '../components/CarouselItem';
-import Footer from '../components/Footer'
+import Footer from '../components/Footer';
+import useInitialState from '../hooks/useInitialState';
 
 import '../assets/styles/App.scss'
 
+const API = 'http://localhost:3000/initialState';
+
 const App = () => {
-    const [ videos, setVideos ] = useState([]); //recuerda useState recibe un arreglo de 2 argumentos, una variable para guardar el edo. y una función para manejar el estado, haciendo alusión a state y setState
-
-    useEffect(() => { //useEffect permite al componente suscribirse a su ciclo de vida, recibe 2 parámetros cuyos comportamientos corresponden a componentDidMount y el segundo a componentWillUnmount
-        fetch('http://localhost:3000/initialState') //es decir, cuando el componente se renderice, hará el fetch a la api fake
-            .then(response => response.json()) //(no debe haber punto y coma, recuerda que response.json retorna OTRA promesa, por eso el then de abajo y el data), manejado con promesas por fetch y response.json, una vez que se obtengan los datos de la api, se gaurdará en response y eso lo parseamos a json
-            .then(data => setVideos(data)); //esa data la asignamos al estado con setVideos
-    }, []); //una vez que el componente se desmonte, esa data quedará como un array vacio
-
-    console.log(videos);
-
+    const [videos, categories] = useInitialState(API);
+    console.log(videos); //objeto
+    console.log(categories); //arreglo
     return (
         <div className="App">
             <Header />
             <Search />
-
-            <Categories title="Mi Lista"> 
-                <Carousel>
-                    <CarouselItem />
-                    <CarouselItem />
-                    <CarouselItem />
-                    <CarouselItem />
-                </Carousel>
-            </Categories>
-        
-            <Categories title="Tendencias"> 
-                <Carousel>
-                    <CarouselItem />
-                    <CarouselItem />
-                    <CarouselItem />
-                    <CarouselItem />
-                </Carousel>
-            </Categories>
-    
-            <Categories title="Recomendaciones"> 
-                <Carousel>
-                    <CarouselItem />
-                    <CarouselItem />
-                    <CarouselItem />
-                    <CarouselItem />
-                </Carousel>
-            </Categories>
-
+            {categories.map(category => ( // iteramos sobre el array categories con map, que irá recorriendo cada posición de las categorias
+                videos[category].length > 0 && ( //SÍ se pueden recorrer las posiciones de los objetos, por lo tanto, si videos (la lista en general) en su posicion [category] tiene un length mayor a 0, entonces que se renderice el componente categories, sino, no se renderiza, ejemplo myList
+                    <Categories key={category} title={category}>  
+                        <Carousel>
+                            {videos[category].map(item => ( //al objeto videos en su posición category le hacemos un map, a cada posición  de la categoría le llamamos item, por cada item renderizamos el CarouselItem
+                                <CarouselItem key={item.id} {...item} />
+                            ))} 
+                        </Carousel>
+                    </Categories>
+                )
+            ))}
             <Footer />
-
         </div>
     );
 }
 
+
 //cambiamos los paréntesis por llaves para quitar el return explícito y agregar el 'return', y así poder utilizar funciones o lógica dentro del componente
+//Recuerda que al iterar sobre un array debes de agregarle un key a cada posicion para aumentar su especificidad
 
 export default App;
