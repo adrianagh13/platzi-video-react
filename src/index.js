@@ -6,7 +6,7 @@ import reducer from './reducers';
 
 import App from './routes/App';
 import { initialState } from '../initialState.json';
-initialState.user = {};
+initialState.user = {}; //a initial state le añadimos este nuevo objeto para guardar los datos de cada usuario
 initialState.playing = {};
 
 const store = createStore(reducer, initialState) //para crear un store indicamos el reducer y un initialState

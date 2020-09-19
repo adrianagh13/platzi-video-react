@@ -15,6 +15,11 @@ const reducer = (state, action) => {
                 myList: state.myList.filter(items => items.id !== action.payload) //filter recorre un array y devuelve un nuevo arreglo con los elementos que cumplan con la condición, 
                 //es por eso que si hay una igualdad entre el elemento del action y del state, se exlcluirá del state y por ende se borrará del myList
             }
+        case 'LOGIN_REQUEST':
+            return {
+                ...state,
+                user: action.payload,
+            }
     }
 
 }

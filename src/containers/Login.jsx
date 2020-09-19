@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+
+import { loginRequest } from '../actions';
 
 import twitter from '../assets/images/twitter1.png';
 import google from '../assets/images/google1.png';
 import '../assets/styles/components/Login.scss';
 
 
-const Login = () => {
-    const [form, setValues] = useState({
+const Login = props => {
+    const [form, setValues] = useState({ //hook useState para crear el state form y la función que lo manejará
         email: '',
     })
 
@@ -20,7 +23,9 @@ const Login = () => {
 
     const handleSubmit = event => {
         event.preventDefault(); //evita el reload al hacer submit
-        console.log(form);
+        props.loginRequest(form); //al action  loginRequest le pasamos el form como payload para que los datos ingresados por el usuario guardados en este state sean pasados al Store de Redux
+        // console.log(form);
+        props.history.push('/'); //props.history.push redirecciona a donde le indiquemos después de que se guarden los datos de form en el store 
     }
     return (
         <section className="login">
@@ -64,6 +69,9 @@ const Login = () => {
     );
 }
 
-//cambiamos de UI component con return explícito a container component para trabajar con lógica
+const mapDispatchToProps = { //Recuerda que mapDispatchToProps se encarga de llevar actions mediante connect y Provider hacia el store de Redux y se agreguen al state mediante reducers
+    loginRequest,
+}
 
-export default Login;
+export default connect(null, mapDispatchToProps)(Login); 
+//cambiamos de UI component con return explícito a container component para trabajar con lógica
