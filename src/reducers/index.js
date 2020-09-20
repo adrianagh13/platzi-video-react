@@ -18,8 +18,13 @@ const reducer = (state, action) => {
         case 'LOGIN_REQUEST':
             return {
                 ...state,
-                user: action.payload,
+                user: action.payload, //el obj user de nuestro state recibe como data el payload que se le pasó mediante la action
             }
+        case 'LOGOUT_REQUEST' :
+                return {
+                    ...state,
+                    user: action.payload,
+                }
     }
 
 }
