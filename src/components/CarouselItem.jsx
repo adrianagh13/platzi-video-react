@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { setFavorite, deleteFavorite } from '../actions';
 
 import play from '../assets/images/play.png';
 import plus from '../assets/images/plus.png';
-import img from '../assets/images/imagen8.jpeg'
-import rmv from '../assets/images/remove.png'
+import rmv from '../assets/images/remove.png';
 import '../assets/styles/components/CarouselItem.scss';
 
 
@@ -28,10 +28,12 @@ const CarouselItem = (props) => {//en parámetros se recibe a props
             <img className="carousel-item__img"src={cover} alt={title} />
             <div className="carousel-item__details">
                 <div className="carousel-item__details--imgs"> 
-                    <img 
-                        src={play} 
-                        alt="play" 
-                    />
+                    <Link to={`/player/${id}`}>
+                        <img 
+                            src={play} 
+                            alt="play" 
+                        />
+                    </Link>
                     {isList ? //isList pertenece a la sección de Lista, por lo tanto estos renders pertenecen a la sección de myList
                         <img //Si la película evaluada es parte de myList, se debe renderizar en la sección de myList el ícono de remove
                             src={rmv} 

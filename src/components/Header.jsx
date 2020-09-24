@@ -58,7 +58,7 @@ const mapDispatchToProps = {
     logoutRequest,
 };
 
-Header.PropTypes = {
+Header.propTypes = {
     user: PropTypes.object,
 }
 

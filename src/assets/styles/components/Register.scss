@@ -1,5 +1,6 @@
 .register {
     background: linear-gradient(#21C08B, #AB88FF);
+    color: white;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -15,10 +16,10 @@
     flex-direction: column;
     border: 2px solid white;
     padding: 60px 68px 60px;
-    min-height: 500px;
+    // min-height: 500px;
     margin-bottom: 50px;
     border-radius: 50px;
-    width: 300px; 
+    // width: 300px; 
 }
   
 .register__wrapper--form {
