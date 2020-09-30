@@ -7,6 +7,10 @@
     align-items: center; 
 }
 
+.isLogin, .isRegister {
+    background-color: #21C08B; //pasamos este color para el componente de login y register, recuerda que el estilo de cada página es diferente.
+}
+
 .header__img {
     width: 200px;
     margin-top: 10px;

@@ -1,6 +1,8 @@
 import React, { useState } from  'react';
 import { Link } from 'react-router-dom';
 
+import Header from '../components/Header';
+
 import google from '../assets/images/google1.png';
 import twitter from '../assets/images/twitter1.png';
 import '../assets/styles/components/Register.scss';
@@ -25,44 +27,47 @@ const Register = () => {
     }
 
     return (
-        <section className="register"> 
-            <section className="register__wrapper">
-                <h2>Crear una cuenta</h2>
-                <form className="register__wrapper--form" action="/" onSubmit={handleSubmit}>
-                    <input 
-                        name="name"
-                        className="input" 
-                        type="text" 
-                        placeholder="Nombre" 
-                        onChange={handleInput}
-                    />
-                    <input 
-                        name="email"
-                        className="input" 
-                        type="text" 
-                        placeholder="Correo"
-                        onChange={handleInput} 
-                    />
-                    <input 
-                        name="password"
-                        className="input" 
-                        type="password" 
-                        placeholder="Contraseña" 
-                        onChange={handleInput}
-                    />
-                    <button className="register__button">Registrarme</button>
-                </form>
-                <section className="register__wrapper--social--media">
-                    <div>
-                        <img src={google} alt="" />Registrate con Google
-                    </div>
-                    <div>
-                        <img src={twitter} alt="" />Regístrate con Twitter
-                    </div>
+        <>
+            <Header isRegister/>
+            <section className="register"> 
+                <section className="register__wrapper">
+                    <h2>Crear una cuenta</h2>
+                    <form className="register__wrapper--form" action="/" onSubmit={handleSubmit}>
+                        <input 
+                            name="name"
+                            className="input" 
+                            type="text" 
+                            placeholder="Nombre" 
+                            onChange={handleInput}
+                        />
+                        <input 
+                            name="email"
+                            className="input" 
+                            type="text" 
+                            placeholder="Correo"
+                            onChange={handleInput} 
+                        />
+                        <input 
+                            name="password"
+                            className="input" 
+                            type="password" 
+                            placeholder="Contraseña" 
+                            onChange={handleInput}
+                        />
+                        <button className="register__button">Registrarme</button>
+                    </form>
+                    <section className="register__wrapper--social--media">
+                        <div>
+                            <img src={google} alt="" />Registrate con Google
+                        </div>
+                        <div>
+                            <img src={twitter} alt="" />Regístrate con Twitter
+                        </div>
+                    </section>
+                    <Link to="/login">Inicia sesión</Link>
                 </section>
-                <Link to="/login">Inicia sesión</Link>
             </section>
-        </section>
+        </>
     );
 }
 

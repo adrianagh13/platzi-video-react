@@ -25,6 +25,13 @@ const reducer = (state, action) => {
                     ...state,
                     user: action.payload,
                 }
+        case 'GET_VIDEO_SOURCE' :
+            return {
+                ...state,
+                playing: state.trends.find(item => item.id === Number(action.payload)) || //find recorre un array y devuelve el primer rrsultado que cumpla con la condicion igualada
+                state.originals.find(item => item.id === Number(action.payload)) ||
+                []
+            }
     }
 
 }
