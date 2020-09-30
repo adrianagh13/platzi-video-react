@@ -62,7 +62,7 @@ const Login = props => {
                         <div><img src={twitter} alt="" /> Inicia sesión con Twitter</div>
                     </section>
                     <p className="login__container--register">
-                        ¿No tienes ninguna cuenta? 
+                        ¿No tienes ninguna cuenta? {''} 
                         <Link to="/register"> 
                             Regístrate
                         </Link>
@@ -71,7 +71,7 @@ const Login = props => {
             </section>
         </>
     );
-}
+} //el {''} representa un espacio válido para jsx
 
 const mapDispatchToProps = { //Recuerda que mapDispatchToProps se encarga de llevar actions mediante connect y Provider hacia el store de Redux y se agreguen al state mediante reducers
     loginRequest,

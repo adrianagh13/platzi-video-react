@@ -1,15 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, compose } from 'redux';
 import reducer from './reducers';
 
 import App from './routes/App';
 import { initialState } from '../initialState.json';
 initialState.user = {}; //a initial state le añadimos este nuevo objeto para guardar los datos de cada usuario
 initialState.playing = {};
+initialState.searchResults = [];
 
-const store = createStore(reducer, initialState) //para crear un store indicamos el reducer y un initialState
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(reducer, initialState, composeEnhancers()) //para crear un store indicamos el reducer y un initialState
 
 ReactDOM.render(
     <Provider store={store}> 

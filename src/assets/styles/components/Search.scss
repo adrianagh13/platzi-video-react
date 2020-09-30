@@ -7,6 +7,10 @@
     height: 300px;
     border-radius: 0px 0px 40px 40px; 
 }
+
+.main .isHome{ //en orden
+    width: 70%;
+}
   
 .main__title {
     color: white;
@@ -21,7 +25,6 @@
     font-family: 'Muli', sans-serif;
     font-size: 16px;
     color: white;
-    // width: 70%;
     height: 40px;
     padding: 0px 20px;
     outline: none; 
